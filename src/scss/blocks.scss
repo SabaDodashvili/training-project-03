@@ -1,0 +1,91 @@
+.burger-manu {
+  display: none;
+  cursor: pointer;
+  height: 25px;
+  width: 35px;
+  position: relative;
+  z-index: 2;
+  & span {
+    width: 100%;
+    height: 4px;
+    background-color: #000000;
+    left: 0;
+    border-radius: 2px;
+  }
+  & span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    transition: 0.3s all ease 0s;
+  }
+  & span:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    transition: 0.3s all ease 0s;
+  }
+  & span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    transition: 0.3s all ease 0s;
+  }
+  @media (max-width: 992px) {
+    display: block;
+  }
+}
+.burger-manu.open {
+  & span {
+    background-color: #000000;
+  }
+  & span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10.5px;
+  }
+  & span:nth-child(2) {
+    transform: scale(0);
+  }
+  & span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 10.5px;
+  }
+}
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'nino_mtavruli';
+  padding: 3px 25px 0;
+  height: 40px;
+  background-color: #ffbe46;
+  transition: all 0.3s ease 0s;
+  font-size: 12px;
+  body.mouse &:hover {
+    background-color: #000000;
+    color: #fff;
+  }
+}
+.title{
+	display: inline-block;
+	font-size: 30px;
+	font-weight: 900;
+	font-family: 'extrasquare_mtavruli';
+	letter-spacing: 0.9px;
+	color: #c2c2c2;
+	transition: 0.3s all ease 0s;
+}
+.price{
+	  font-family: 'arial_2009';
+    font-size: 24px;
+    font-weight: 900;
+    color: #333333;
+    transition: 0.3s all ease 0s;
+}
+.remove-icone{
+	height: 12px;
+	width: 12px;
+	fill: #c2c2c2;
+	cursor: pointer;
+	transition: 0.3s ease all 0s;
+	body.mouse &:hover {
+		fill: #ffbe46;
+	}
+}

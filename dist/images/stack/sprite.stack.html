@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<title>SVG stack preview | svg-sprite</title>
+		<style>@charset "UTF-8";body{padding:0;margin:0;color:#666;background:#fafafa;font-family:Arial,Helvetica,sans-serif;font-size:1em;line-height:1.4}header{display:block;padding:3em 3em 2em 3em;background-color:#fff}header p{margin:2em 0 0 0}section{border-top:1px solid #eee;padding:2em 3em 0 3em}section ul{margin:0;padding:0}section li{display:inline;display:inline-block;background-color:#fff;position:relative;margin:0 2em 2em 0;vertical-align:top;border:1px solid #ccc;padding:1em 1em 3em 1em;cursor:default}.icon-box{margin:0;width:144px;height:144px;position:relative;background:#ccc url("data:image/gif;base64,R0lGODlhDAAMAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQjk4OTI0MUY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQjk4OTI0MkY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNCOTg5MjNGRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjNCOTg5MjQwRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAwADAAAAhaEH6mHmmzcgzJAUG/NVGrfOZ8YLlABADs=") top left repeat;border:1px solid #ccc;display:table-cell;vertical-align:middle;text-align:center}.icon{display:inline;display:inline-block}h1{margin-top:0}h2{margin:0;padding:0;font-size:1em;font-weight:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:absolute;left:1em;right:1em;bottom:1em}footer{display:block;margin:0;padding:0 3em 3em 3em}footer p{margin:0;font-size:.7em}footer a{color:#0f7595;margin-left:0}</style>
+		
+<!--
+	
+Sprite shape dimensions
+====================================================================================================
+You will need to set the sprite shape dimensions via CSS when you use them as stack SVGs, otherwise
+they would become a huge 100% in size. You may use the following dimension classes for doing so.
+They might well be outsourced to an external stylesheet of course.
+
+-->
+
+<style type="text/css">
+	.svg-arrow-dims { width: 24px; height: 24px; }
+	.svg-basket-dims { width: 24px; height: 24px; }
+	.svg-bla-hast-dims { width: 2000px; height: 2000px; }
+	.svg-calendar-dims { width: 24px; height: 24px; }
+	.svg-check-mark-dims { width: 24px; height: 24px; }
+	.svg-clarion-dims { width: 2000px; height: 491.2px; }
+	.svg-clear-correct-dims { width: 1938.3px; height: 409.9px; }
+	.svg-comparison-dims { width: 512px; height: 512px; }
+	.svg-delivery-dims { width: 24px; height: 24px; }
+	.svg-double-arrow-dims { width: 24px; height: 24px; }
+	.svg-email-dims { width: 24px; height: 24px; }
+	.svg-entrance-dims { width: 24px; height: 24px; }
+	.svg-header-dims { width: 1920px; height: 407px; }
+	.svg-log-out-dims { width: 24px; height: 24px; }
+	.svg-logo-dims { width: 420.09px; height: 420.4px; }
+	.svg-main-logo-dims { width: 1920px; height: 407px; }
+	.svg-master-card-dims { width: 300px; height: 180px; }
+	.svg-nordictrack-dims { width: 2000px; height: 2000px; }
+	.svg-oxygen-dims { width: 2000px; height: 2000px; }
+	.svg-phone-dims { width: 24px; height: 24px; }
+	.svg-qiwi-dims { width: 840.8px; height: 360.4px; }
+	.svg-quotes-dims { width: 24px; height: 24px; }
+	.svg-reddit-dims { width: 24px; height: 24px; }
+	.svg-registration-dims { width: 24px; height: 24px; }
+	.svg-remove-dims { width: 24px; height: 24px; }
+	.svg-search-dims { width: 24px; height: 24px; }
+	.svg-snapchat-dims { width: 24px; height: 24px; }
+	.svg-tools-dims { width: 24px; height: 24px; }
+	.svg-trash-dims { width: 512px; height: 512px; }
+	.svg-twitch-dims { width: 24px; height: 24px; }
+	.svg-view-dims { width: 24px; height: 24px; }
+	.svg-visa-dims { width: 2000px; height: 1249.35px; }
+</style>
+
+<!--
+====================================================================================================
+-->
+
+	</head>
+	<body>
+		<header>
+			<h1>SVG stack preview</h1>
+			<p>This preview features an SVG stack. Please have a look at the HTML source for further details and be aware of the following constraints:</p>
+			<ul>
+				<li>Your browser has to <a href="http://caniuse.com/#feat=svg-fragment" target="_blank">support SVG fragment identifiers</a> for SVG stacks to work.</li>
+				<li>Support for SVG fragment identifiers hasn't always been that decent. For older browsers you will have to use some prolyfill like <a href="https://github.com/preciousforever/SVG-Stacker/blob/master/fixsvgstack.jquery.js" target="_blank">fixsvgstack.jquery.js</a>.</li>
+			</ul>
+		</header>
+		<section>
+			
+<!--
+	
+SVG stack
+====================================================================================================
+These SVG images make use of fragment identifiers (IDs) to reference certain portions of the
+external sprite. By default, all shapes inside the sprite are hidden by CSS. The `:target` pseudo
+selector is used to show the very shape that is referenced by the fragment identifier.  
+
+-->
+
+			<ul>
+				
+				<li title="arrow">
+					<div class="icon-box">
+						
+						<!-- arrow -->
+						<img src="../icons/icons.svg#arrow" class="svg-arrow-dims" alt="arrow"/>
+						
+					</div>
+					<h2>arrow</h2>
+				</li>
+				<li title="basket">
+					<div class="icon-box">
+						
+						<!-- basket -->
+						<img src="../icons/icons.svg#basket" class="svg-basket-dims" alt="basket"/>
+						
+					</div>
+					<h2>basket</h2>
+				</li>
+				<li title="bla-hast">
+					<div class="icon-box">
+						
+						<!-- bla-hast -->
+						<img src="../icons/icons.svg#bla-hast" class="svg-bla-hast-dims" alt="bla-hast"/>
+						
+					</div>
+					<h2>bla-hast</h2>
+				</li>
+				<li title="calendar">
+					<div class="icon-box">
+						
+						<!-- calendar -->
+						<img src="../icons/icons.svg#calendar" class="svg-calendar-dims" alt="calendar"/>
+						
+					</div>
+					<h2>calendar</h2>
+				</li>
+				<li title="check-mark">
+					<div class="icon-box">
+						
+						<!-- check-mark -->
+						<img src="../icons/icons.svg#check-mark" class="svg-check-mark-dims" alt="check-mark"/>
+						
+					</div>
+					<h2>check-mark</h2>
+				</li>
+				<li title="clarion">
+					<div class="icon-box">
+						
+						<!-- clarion -->
+						<img src="../icons/icons.svg#clarion" class="svg-clarion-dims" alt="clarion"/>
+						
+					</div>
+					<h2>clarion</h2>
+				</li>
+				<li title="clear-correct">
+					<div class="icon-box">
+						
+						<!-- clear-correct -->
+						<img src="../icons/icons.svg#clear-correct" class="svg-clear-correct-dims" alt="clear-correct"/>
+						
+					</div>
+					<h2>clear-correct</h2>
+				</li>
+				<li title="comparison">
+					<div class="icon-box">
+						
+						<!-- comparison -->
+						<img src="../icons/icons.svg#comparison" class="svg-comparison-dims" alt="comparison"/>
+						
+					</div>
+					<h2>comparison</h2>
+				</li>
+				<li title="delivery">
+					<div class="icon-box">
+						
+						<!-- delivery -->
+						<img src="../icons/icons.svg#delivery" class="svg-delivery-dims" alt="delivery"/>
+						
+					</div>
+					<h2>delivery</h2>
+				</li>
+				<li title="double-arrow">
+					<div class="icon-box">
+						
+						<!-- double-arrow -->
+						<img src="../icons/icons.svg#double-arrow" class="svg-double-arrow-dims" alt="double-arrow"/>
+						
+					</div>
+					<h2>double-arrow</h2>
+				</li>
+				<li title="email">
+					<div class="icon-box">
+						
+						<!-- email -->
+						<img src="../icons/icons.svg#email" class="svg-email-dims" alt="email"/>
+						
+					</div>
+					<h2>email</h2>
+				</li>
+				<li title="entrance">
+					<div class="icon-box">
+						
+						<!-- entrance -->
+						<img src="../icons/icons.svg#entrance" class="svg-entrance-dims" alt="entrance"/>
+						
+					</div>
+					<h2>entrance</h2>
+				</li>
+				<li title="header">
+					<div class="icon-box">
+						
+						<!-- header -->
+						<img src="../icons/icons.svg#header" class="svg-header-dims" alt="header"/>
+						
+					</div>
+					<h2>header</h2>
+				</li>
+				<li title="log-out">
+					<div class="icon-box">
+						
+						<!-- log-out -->
+						<img src="../icons/icons.svg#log-out" class="svg-log-out-dims" alt="log-out"/>
+						
+					</div>
+					<h2>log-out</h2>
+				</li>
+				<li title="logo">
+					<div class="icon-box">
+						
+						<!-- logo -->
+						<img src="../icons/icons.svg#logo" class="svg-logo-dims" alt="logo"/>
+						
+					</div>
+					<h2>logo</h2>
+				</li>
+				<li title="main-logo">
+					<div class="icon-box">
+						
+						<!-- main-logo -->
+						<img src="../icons/icons.svg#main-logo" class="svg-main-logo-dims" alt="main-logo"/>
+						
+					</div>
+					<h2>main-logo</h2>
+				</li>
+				<li title="master-card">
+					<div class="icon-box">
+						
+						<!-- master-card -->
+						<img src="../icons/icons.svg#master-card" class="svg-master-card-dims" alt="master-card"/>
+						
+					</div>
+					<h2>master-card</h2>
+				</li>
+				<li title="nordictrack">
+					<div class="icon-box">
+						
+						<!-- nordictrack -->
+						<img src="../icons/icons.svg#nordictrack" class="svg-nordictrack-dims" alt="nordictrack"/>
+						
+					</div>
+					<h2>nordictrack</h2>
+				</li>
+				<li title="oxygen">
+					<div class="icon-box">
+						
+						<!-- oxygen -->
+						<img src="../icons/icons.svg#oxygen" class="svg-oxygen-dims" alt="oxygen"/>
+						
+					</div>
+					<h2>oxygen</h2>
+				</li>
+				<li title="phone">
+					<div class="icon-box">
+						
+						<!-- phone -->
+						<img src="../icons/icons.svg#phone" class="svg-phone-dims" alt="phone"/>
+						
+					</div>
+					<h2>phone</h2>
+				</li>
+				<li title="qiwi">
+					<div class="icon-box">
+						
+						<!-- qiwi -->
+						<img src="../icons/icons.svg#qiwi" class="svg-qiwi-dims" alt="qiwi"/>
+						
+					</div>
+					<h2>qiwi</h2>
+				</li>
+				<li title="quotes">
+					<div class="icon-box">
+						
+						<!-- quotes -->
+						<img src="../icons/icons.svg#quotes" class="svg-quotes-dims" alt="quotes"/>
+						
+					</div>
+					<h2>quotes</h2>
+				</li>
+				<li title="reddit">
+					<div class="icon-box">
+						
+						<!-- reddit -->
+						<img src="../icons/icons.svg#reddit" class="svg-reddit-dims" alt="reddit"/>
+						
+					</div>
+					<h2>reddit</h2>
+				</li>
+				<li title="registration">
+					<div class="icon-box">
+						
+						<!-- registration -->
+						<img src="../icons/icons.svg#registration" class="svg-registration-dims" alt="registration"/>
+						
+					</div>
+					<h2>registration</h2>
+				</li>
+				<li title="remove">
+					<div class="icon-box">
+						
+						<!-- remove -->
+						<img src="../icons/icons.svg#remove" class="svg-remove-dims" alt="remove"/>
+						
+					</div>
+					<h2>remove</h2>
+				</li>
+				<li title="search">
+					<div class="icon-box">
+						
+						<!-- search -->
+						<img src="../icons/icons.svg#search" class="svg-search-dims" alt="search"/>
+						
+					</div>
+					<h2>search</h2>
+				</li>
+				<li title="snapchat">
+					<div class="icon-box">
+						
+						<!-- snapchat -->
+						<img src="../icons/icons.svg#snapchat" class="svg-snapchat-dims" alt="snapchat"/>
+						
+					</div>
+					<h2>snapchat</h2>
+				</li>
+				<li title="tools">
+					<div class="icon-box">
+						
+						<!-- tools -->
+						<img src="../icons/icons.svg#tools" class="svg-tools-dims" alt="tools"/>
+						
+					</div>
+					<h2>tools</h2>
+				</li>
+				<li title="trash">
+					<div class="icon-box">
+						
+						<!-- trash -->
+						<img src="../icons/icons.svg#trash" class="svg-trash-dims" alt="trash"/>
+						
+					</div>
+					<h2>trash</h2>
+				</li>
+				<li title="twitch">
+					<div class="icon-box">
+						
+						<!-- twitch -->
+						<img src="../icons/icons.svg#twitch" class="svg-twitch-dims" alt="twitch"/>
+						
+					</div>
+					<h2>twitch</h2>
+				</li>
+				<li title="view">
+					<div class="icon-box">
+						
+						<!-- view -->
+						<img src="../icons/icons.svg#view" class="svg-view-dims" alt="view"/>
+						
+					</div>
+					<h2>view</h2>
+				</li>
+				<li title="visa">
+					<div class="icon-box">
+						
+						<!-- visa -->
+						<img src="../icons/icons.svg#visa" class="svg-visa-dims" alt="visa"/>
+						
+					</div>
+					<h2>visa</h2>
+				</li>
+			</ul>
+
+<!--
+====================================================================================================
+-->
+
+		</section>
+		<footer>
+			<p>Generated at Mon, 12 Apr 2021 01:41:57 GMT by <a href="https://github.com/jkphl/svg-sprite" target="_blank">svg-sprite</a>.</p>
+		</footer>
+	</body>
+</html>
